@@ -11,10 +11,11 @@ async function postInfo(e) {
     var inputName = document.getElementById('CformName');
     var inputEmail = document.getElementById('CformEmail');
     var inputSubject = document.getElementById('CformSubject');
-    //            |
-    //change this\|/ to show in html
-    if(inputName.value === '' | inputEmail.value === '' | inputSubject.value === ''){console.log("Not all info filled out"); return}
-    console.log(inputName, " ", inputEmail, " ", inputSubject);
+    if(inputName.value === '' | inputEmail.value === '' | inputSubject.value === ''){
+        var notFullOut = document.getElementById('isNotFullOut');
+        notFullOut.innerText = 'Not all info is filled out'
+        return
+    }
     const res = await fetch(formSubURL,
     {
         

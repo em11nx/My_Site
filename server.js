@@ -3,10 +3,10 @@ const express = require('express');
 
 const app = express();
 
-const PORT = 3000;                 
+const PORT = 3000;
 
 app.use(express.static('public'));
-app.use(express.json())
+app.use(express.json());
 
 app.post('/form/sinfo', (req, res) => {
   const { formContent } = req.body;
