@@ -1,10 +1,20 @@
 const exp = require('constants');
 const express = require('express');
-const fs = require('fs')
+const fs = require('fs');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 
 const PORT = 3000;
+
+// Rate limiter configuration
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
+
+// Apply rate limiter to all requests
+app.use(limiter);
 
 app.use(express.static('public'));
 app.use(express.json());
